@@ -57,10 +57,9 @@
       margin: 0 auto;
     }
 
-    /* 메뉴: 처음에는 제목 아래, 스크롤하면 상단 고정 */
+    /* 메뉴: 처음에는 제목 아래에 있고, 스크롤하면 화면 상단에 고정 */
     nav {
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 9999;
       width: 100%;
       margin: 0 auto 20px;
@@ -71,6 +70,16 @@
       background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(8px);
       box-shadow: 0 10px 24px rgba(30, 58, 138, 0.14);
+    }
+
+    /* 스크롤 후 상단 고정 상태 */
+    nav.nav-fixed {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      margin: 0;
     }
 
     nav ul {
@@ -257,6 +266,7 @@
 
     #nav-placeholder {
       display: none;
+      height: 0;
     }
 
     @media (max-width: 900px) {
@@ -287,6 +297,13 @@
         margin: 0 auto 12px;
         padding: 7px 6px;
         border-radius: 0 0 16px 16px;
+      }
+
+      nav.nav-fixed {
+        left: 10px;
+        right: 10px;
+        transform: none;
+        width: calc(100% - 20px);
       }
 
       nav ul {
@@ -423,6 +440,7 @@
         <li><a href="#section6">핵심 요약</a></li>
       </ul>
     </nav>
+    <div id="nav-placeholder"></div>
 
     <main>
       <section id="section1">
@@ -769,6 +787,55 @@
   <footer class="footer">
     2028 대입 전형 변화 정리 · 송도이샘로봇
   </footer>
+
+  <script>
+    // 메뉴 고정 처리
+    // 처음에는 제목 아래에 있고, 스크롤로 메뉴 위치를 지나면 화면 상단에 고정합니다.
+    document.addEventListener("DOMContentLoaded", function () {
+      const nav = document.querySelector("nav");
+      const placeholder = document.getElementById("nav-placeholder");
+
+      if (!nav || !placeholder) return;
+
+      let navTop = 0;
+
+      function resetNavPosition() {
+        nav.classList.remove("nav-fixed");
+        placeholder.style.display = "none";
+        placeholder.style.height = "0px";
+        navTop = nav.getBoundingClientRect().top + window.scrollY;
+      }
+
+      function setPlaceholderHeight() {
+        placeholder.style.height = nav.offsetHeight + "px";
+      }
+
+      function handleScroll() {
+        if (window.scrollY >= navTop) {
+          if (!nav.classList.contains("nav-fixed")) {
+            setPlaceholderHeight();
+            placeholder.style.display = "block";
+            nav.classList.add("nav-fixed");
+          }
+        } else {
+          nav.classList.remove("nav-fixed");
+          placeholder.style.display = "none";
+          placeholder.style.height = "0px";
+        }
+      }
+
+      resetNavPosition();
+      handleScroll();
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+
+      window.addEventListener("resize", function () {
+        resetNavPosition();
+        handleScroll();
+      });
+    });
+  </script>
+
 
 </body>
 </html>
