@@ -155,20 +155,18 @@
 
     table {
       width: 100%;
-      min-width: 0;
+      min-width: 760px;
       border-collapse: collapse;
       font-size: 0.95rem;
-      table-layout: auto;
     }
 
     th, td {
       border-bottom: 1px solid var(--line);
       border-right: 1px solid var(--line);
-      padding: 6px 8px;
+      padding: 8px 10px;
       vertical-align: middle;
       word-break: keep-all;
       text-align: center;
-      line-height: 1.3;
     }
 
     th:last-child, td:last-child {
@@ -271,6 +269,7 @@
       }
 
       table {
+        font-size: 0.88rem;
       }
 
       th, td {
@@ -307,11 +306,11 @@
       }
 
       th, td {
-        padding: 5px 3px;
+        padding: 7px 4px;
         white-space: normal;
         word-break: keep-all;
-        overflow-wrap: break-word;
-        line-height: 1.28;
+        overflow-wrap: anywhere;
+        line-height: 1.35;
       }
 
       section h2 {
@@ -390,476 +389,149 @@
         width: 100%;
       }
     }
-table.jeongsi-table {
-      table-layout: fixed;
-    }
 
 
-    table.jeongsi-table th,
-    table.jeongsi-table td {
-      padding-left: 7px;
-      padding-right: 7px;
-    }
-
-    table.quant-table {
-      table-layout: fixed;
-    }
-
-    table.quant-table th,
-    table.quant-table td {
-      padding-left: 5px;
-      padding-right: 5px;
-      white-space: nowrap;
-    }
-
-    table.quant-table td {
-      word-break: keep-all;
-    }
-
-
-    table.susi-table {
-      table-layout: fixed;
-    }
-
-    table.susi-table th,
-    table.susi-table td {
-      padding-left: 5px;
-      padding-right: 5px;
-    }
-
-
-    table th,
-    table td {
-      font-size: inherit !important;
-    }
-
-    @media (max-width: 700px) {
-      table,
-      table th,
-      table td {
-        font-size: 0.78rem !important;
-      }
-    }
-
-
-    /* 모바일 표 좌우 스크롤 방지 최종 보정 */
-    @media (max-width: 700px) {
-      html,
-      body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden !important;
-      }
-
-      .container,
-      section,
-      .table-wrap {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-      }
-
-      table,
-      table.jeongsi-table,
-      table.quant-table,
-      table.susi-table,
-      table.col-adjust {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        table-layout: fixed !important;
-      }
-
-      colgroup,
-      col {
-        width: auto !important;
-      }
-
-      th,
-      td,
-      table.quant-table th,
-      table.quant-table td,
-      table.susi-table th,
-      table.susi-table td,
-      table.jeongsi-table th,
-      table.jeongsi-table td {
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-        padding: 5px 3px !important;
-        line-height: 1.28 !important;
-      }
-    }
-
-
-    table.col-adjust {
-      table-layout: fixed;
-    }
-
-    table.col-adjust th,
-    table.col-adjust td {
-      padding-left: 6px;
-      padding-right: 6px;
-    }
-
-    @media (min-width: 701px) {
-      table.col-adjust th,
-      table.col-adjust td {
-        white-space: normal;
-        word-break: keep-all;
-        overflow-wrap: break-word;
-      }
-    }
-
-
-    /* PC·모바일 공통 좌우 스크롤 방지 */
-    html,
-    body {
+    /* ===== 최종 레이아웃 보정 ===== */
+    html, body {
       max-width: 100%;
       overflow-x: hidden !important;
     }
 
-    .container,
-    section,
+    header {
+      padding: 34px 18px 26px !important;
+    }
+
+    header p {
+      display: none !important;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px)) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    nav {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 1000 !important;
+      width: min(1180px, calc(100% - 32px)) !important;
+      margin: 0 auto 20px auto !important;
+      padding: 12px !important;
+      border-radius: 0 0 22px 22px !important;
+      background: rgba(255,255,255,0.96) !important;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 24px rgba(30, 58, 138, 0.12) !important;
+    }
+
+    nav ul {
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      gap: 8px !important;
+    }
+
+    nav a {
+      padding: 10px 4px !important;
+      font-size: 0.86rem !important;
+      white-space: nowrap !important;
+      background: linear-gradient(180deg, #f3f7ff 0%, #e8f0ff 100%) !important;
+      border: 1px solid #cfdcff !important;
+      color: #1e3a8a !important;
+      font-weight: 800 !important;
+    }
+
     .table-wrap {
+      width: 100% !important;
       max-width: 100% !important;
       overflow-x: hidden !important;
     }
 
-    table,
-    table.jeongsi-table,
-    table.quant-table,
-    table.susi-table,
-    table.col-adjust {
+    table {
       width: 100% !important;
       min-width: 0 !important;
       max-width: 100% !important;
-      table-layout: fixed !important;
-    }
-
-    th,
-    td {
-      white-space: normal !important;
-      word-break: keep-all !important;
-      overflow-wrap: break-word !important;
-    }
-
-
-    /* 표 글자 크기 및 행 높이 최종 균형 조정 */
-    table {
+      table-layout: auto !important;
       font-size: 0.9rem !important;
     }
 
-    th,
-    td {
+    th, td {
+      font-size: inherit !important;
       padding: 5px 7px !important;
-      line-height: 1.25 !important;
+      line-height: 1.28 !important;
+      text-align: center !important;
       vertical-align: middle !important;
-    }
-
-    h3 {
-      margin-top: 12px !important;
-      margin-bottom: 6px !important;
-    }
-
-    h4 {
-      margin-top: 8px !important;
-      margin-bottom: 5px !important;
-      font-size: 0.98rem !important;
-    }
-
-    @media (max-width: 700px) {
-      table,
-      table th,
-      table td {
-        font-size: 0.74rem !important;
-      }
-
-      th,
-      td {
-        padding: 4px 3px !important;
-        line-height: 1.22 !important;
-      }
-    }
-
-    /* 정성평가 반영 대학: 짧은 열은 좁게, 긴 열은 넓게 */
-    table.qual-table {
-      table-layout: fixed !important;
-    }
-
-    table.qual-table th,
-    table.qual-table td {
-      padding-left: 6px !important;
-      padding-right: 6px !important;
-    }
-
-    table.qual-table td:nth-child(1) {
-      white-space: nowrap !important;
-    }
-
-    table.qual-table td:nth-child(2) {
-      white-space: nowrap !important;
-    }
-
-    table.qual-table td:nth-child(3) {
-      white-space: normal !important;
       word-break: keep-all !important;
       overflow-wrap: break-word !important;
     }
 
-
-    /* 데스크탑: 글자 길이를 기준으로 열 너비 자동 배분 */
-    @media (min-width: 701px) {
-      table,
-      table.jeongsi-table,
-      table.quant-table,
-      table.susi-table,
-      table.col-adjust,
-      table.qual-table {
-        table-layout: auto !important;
-        width: 100% !important;
-      }
-
-      colgroup,
-      col {
-        width: auto !important;
-      }
-
-      th,
-      td {
-        white-space: nowrap !important;
-        word-break: keep-all !important;
-        overflow-wrap: normal !important;
-      }
-
-      td br {
-        display: block;
-      }
+    table.quant-table {
+      table-layout: fixed !important;
     }
 
-    /* 모바일: 화면 폭 안에 맞추기 위해 줄바꿈 허용 */
-    @media (max-width: 700px) {
-      table,
-      table.jeongsi-table,
-      table.quant-table,
-      table.susi-table,
-      table.col-adjust,
-      table.qual-table {
-        table-layout: fixed !important;
-        width: 100% !important;
-        min-width: 0 !important;
-      }
+    table.quant-table col:nth-child(1) { width: 19% !important; }
+    table.quant-table col:nth-child(2) { width: 11% !important; }
+    table.quant-table col:nth-child(3) { width: 34% !important; }
+    table.quant-table col:nth-child(4) { width: 36% !important; }
 
-      th,
-      td {
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-      }
-    }
-      table.quant-table th,
-      table.quant-table td {
-        white-space: normal !important;
-      }
-
-      table.quant-table th:nth-child(1),
-      table.quant-table td:nth-child(1),
-      table.quant-table th:nth-child(2),
-      table.quant-table td:nth-child(2),
-      table.quant-table th:nth-child(3),
-      table.quant-table td:nth-child(3) {
-        white-space: nowrap !important;
-      }
-
-      table.quant-table th:nth-child(4),
-      table.quant-table td:nth-child(4) {
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-      }
-    }
-
-    /* 모바일에서는 화면 폭에 맞게 자동 줄바꿈 */
-    @media (max-width: 700px) {
-      table.quant-table {
-        table-layout: fixed !important;
-      }
-
-      table.quant-table th,
-      table.quant-table td {
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-      }
-    }
-
-
-    /* 정량평가 표: 열별 빈 공간 균형 조정 */
-    @media (min-width: 701px) {
-      table.quant-table {
-        table-layout: fixed !important;
-      }
-
-      table.quant-table th,
-      table.quant-table td {
-        padding-left: 4px !important;
-        padding-right: 4px !important;
-        line-height: 1.25 !important;
-      }
-
-      table.quant-table th:nth-child(1),
-      table.quant-table td:nth-child(1),
-      table.quant-table th:nth-child(2),
-      table.quant-table td:nth-child(2),
-      table.quant-table th:nth-child(3),
-      table.quant-table td:nth-child(3) {
-        white-space: nowrap !important;
-        word-break: keep-all !important;
-      }
-
-      table.quant-table th:nth-child(4),
-      table.quant-table td:nth-child(4) {
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-      }
+    table.quant-table th,
+    table.quant-table td {
+      padding-left: 4px !important;
+      padding-right: 4px !important;
     }
 
     @media (max-width: 700px) {
-      table.quant-table {
-        table-layout: fixed !important;
+      header {
+        padding: 30px 12px 22px !important;
       }
 
-      table.quant-table th,
-      table.quant-table td {
-        padding-left: 3px !important;
-        padding-right: 3px !important;
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
+      header h1 {
+        font-size: 2rem !important;
       }
-    }
 
-
-    /* [정량평가 반영 대학] 표 최종 보정
-       - 전형명처럼 짧은 열은 좁게
-       - 반영 방법, 학생부 반영 방식처럼 긴 열은 넓게
-       - PC에서는 불필요한 줄바꿈 방지
-       - 모바일에서는 화면폭에 맞게 줄바꿈 허용
-    */
-    @media (min-width: 701px) {
-      table.quant-table {
-        table-layout: fixed !important;
+      .container {
         width: 100% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
       }
 
-      table.quant-table col:nth-child(1) {
-        width: 19% !important;
-      }
-
-      table.quant-table col:nth-child(2) {
-        width: 11% !important;
-      }
-
-      table.quant-table col:nth-child(3) {
-        width: 31% !important;
-      }
-
-      table.quant-table col:nth-child(4) {
-        width: 39% !important;
-      }
-
-      table.quant-table th,
-      table.quant-table td {
-        white-space: nowrap !important;
-        word-break: keep-all !important;
-        overflow-wrap: normal !important;
-        padding-left: 4px !important;
-        padding-right: 4px !important;
-        font-size: 0.9rem !important;
-        line-height: 1.25 !important;
-      }
-    }
-
-    @media (max-width: 700px) {
-      table.quant-table {
-        table-layout: fixed !important;
+      nav {
         width: 100% !important;
-        min-width: 0 !important;
+        margin: 0 auto 12px auto !important;
+        padding: 8px !important;
+        border-radius: 0 0 18px 18px !important;
       }
 
-      table.quant-table col:nth-child(1) {
-        width: 22% !important;
+      nav ul {
+        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+        gap: 5px !important;
       }
 
-      table.quant-table col:nth-child(2) {
-        width: 14% !important;
+      nav a {
+        padding: 8px 1px !important;
+        font-size: 0.62rem !important;
+        border-radius: 10px !important;
       }
 
-      table.quant-table col:nth-child(3) {
-        width: 30% !important;
+      section {
+        width: 100% !important;
+        padding: 12px 8px !important;
+        border-radius: 16px !important;
       }
 
-      table.quant-table col:nth-child(4) {
-        width: 34% !important;
-      }
-
-      table.quant-table th,
-      table.quant-table td {
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-        padding-left: 3px !important;
-        padding-right: 3px !important;
+      table {
+        table-layout: fixed !important;
         font-size: 0.74rem !important;
+      }
+
+      th, td {
+        padding: 4px 3px !important;
         line-height: 1.22 !important;
-      }
-    }
-
-
-    /* 모바일 [정량평가 반영 대학] 표 최종 보정 */
-    @media (max-width: 700px) {
-      table.quant-table {
-        table-layout: fixed !important;
-        width: 100% !important;
-        min-width: 0 !important;
-      }
-
-      table.quant-table col:nth-child(1) {
-        width: 20% !important;
-      }
-
-      table.quant-table col:nth-child(2) {
-        width: 11% !important;
-      }
-
-      table.quant-table col:nth-child(3) {
-        width: 36% !important;
-      }
-
-      table.quant-table col:nth-child(4) {
-        width: 33% !important;
-      }
-
-      table.quant-table th,
-      table.quant-table td {
-        font-size: 0.74rem !important;
-        padding-left: 2px !important;
-        padding-right: 2px !important;
-        line-height: 1.22 !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-      }
-
-      table.quant-table th:nth-child(2),
-      table.quant-table td:nth-child(2) {
-        white-space: nowrap !important;
-      }
-
-      table.quant-table th:nth-child(3),
-      table.quant-table td:nth-child(3) {
         white-space: normal !important;
       }
+
+      table.quant-table col:nth-child(1) { width: 20% !important; }
+      table.quant-table col:nth-child(2) { width: 11% !important; }
+      table.quant-table col:nth-child(3) { width: 35% !important; }
+      table.quant-table col:nth-child(4) { width: 34% !important; }
     }
 
 </style>
@@ -993,14 +665,7 @@ table.jeongsi-table {
       <section id="section3">
         <h2>[3] 교과전형, 정성평가 확대</h2>
         <div class="table-wrap">
-          <table class="col-adjust">
-            <colgroup>
-              <col style="width: 16%;">
-              <col style="width: 30%;">
-              <col style="width: 9%;">
-              <col style="width: 15%;">
-              <col style="width: 30%;">
-            </colgroup>
+          <table>
             <thead>
               <tr>
                 <th>대학</th>
@@ -1035,13 +700,7 @@ table.jeongsi-table {
         
 
         <div class="table-wrap">
-          <table class="susi-table">
-            <colgroup>
-              <col style="width: 18%;">
-              <col style="width: 27%;">
-              <col style="width: 34%;">
-              <col style="width: 21%;">
-            </colgroup>
+          <table>
             <thead>
               <tr>
                 <th>대학</th>
@@ -1078,12 +737,7 @@ table.jeongsi-table {
         
 
         <div class="table-wrap">
-          <table class="jeongsi-table">
-            <colgroup>
-              <col style="width: 29%;">
-              <col style="width: 22%;">
-              <col style="width: 49%;">
-            </colgroup>
+          <table>
             <thead>
               <tr>
                 <th>대학</th>
@@ -1123,12 +777,7 @@ table.jeongsi-table {
 
         <h4>[정성평가 반영 대학]</h4>
         <div class="table-wrap">
-          <table class="qual-table">
-            <colgroup>
-              <col style="width: 22%;">
-              <col style="width: 11%;">
-              <col style="width: 67%;">
-            </colgroup>
+          <table>
             <thead>
               <tr>
                 <th>대학</th>
@@ -1153,10 +802,10 @@ table.jeongsi-table {
         <div class="table-wrap">
           <table class="quant-table">
             <colgroup>
-              <col style="width: 23%;">
-              <col style="width: 12%;">
-              <col style="width: 35%;">
-              <col style="width: 30%;">
+              <col>
+              <col>
+              <col>
+              <col>
             </colgroup>
             <thead>
               <tr>
