@@ -15,7 +15,6 @@
       --line: #e5e7eb;
       --thead: #eff6ff;
       --accent: #dbeafe;
-      --success: #ecfdf5;
     }
 
     * {
@@ -24,10 +23,14 @@
 
     html {
       scroll-behavior: smooth;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     body {
       margin: 0;
+      max-width: 100%;
+      overflow-x: hidden;
       font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
@@ -46,13 +49,7 @@
       font-size: clamp(2rem, 4vw, 3rem);
       letter-spacing: -0.04em;
       font-weight: 800;
-    }
-
-    header p {
-      margin: 14px auto 0;
-      max-width: 760px;
-      color: #dbeafe;
-      font-size: 1.05rem;
+      line-height: 1.2;
     }
 
     .container {
@@ -60,41 +57,51 @@
       margin: 0 auto;
     }
 
+    /* 메뉴: 처음에는 제목 아래, 스크롤하면 상단 고정 */
     nav {
-      margin: 0 auto 20px;
-      background: rgba(255,255,255,0.96);
-      border: 1px solid var(--line);
-      border-radius: 0 0 22px 22px;
-      box-shadow: 0 10px 24px rgba(30, 58, 138, 0.12);
-      padding: 16px;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 9999;
+      width: 100%;
+      margin: 0 auto 20px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-top: none;
+      border-radius: 0 0 22px 22px;
+      background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(8px);
+      box-shadow: 0 10px 24px rgba(30, 58, 138, 0.14);
     }
 
     nav ul {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
       margin: 0;
       padding: 0;
     }
 
     nav a {
-      display: block;
-      padding: 12px 10px;
-      border-radius: 14px;
-      text-align: center;
-      color: #1e3a8a;
-      text-decoration: none;
-      font-weight: 800;
-      background: linear-gradient(180deg, #f3f7ff 0%, #e8f0ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 36px;
+      padding: 8px 6px;
       border: 1px solid #cfdcff;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #f3f7ff 0%, #e8f0ff 100%);
+      color: #1e3a8a;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
       box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
-      transition: all 0.18s ease;
-      font-size: 0.94rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
     nav a:hover {
@@ -109,11 +116,12 @@
     }
 
     section {
-      background: var(--card);
+      width: 100%;
+      margin: 16px 0;
+      padding: 18px;
       border: 1px solid var(--line);
       border-radius: 24px;
-      padding: 18px;
-      margin: 16px 0;
+      background: var(--card);
       box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
     }
 
@@ -124,6 +132,7 @@
       color: #111827;
       font-size: clamp(1.35rem, 2vw, 1.85rem);
       letter-spacing: -0.035em;
+      line-height: 1.3;
     }
 
     h3 {
@@ -146,30 +155,38 @@
     }
 
     .table-wrap {
-      overflow-x: auto;
+      width: 100%;
+      max-width: 100%;
+      margin: 8px 0 12px;
+      overflow-x: hidden;
       border: 1px solid var(--line);
       border-radius: 16px;
       background: white;
-      margin: 8px 0 12px;
     }
 
     table {
       width: 100%;
-      min-width: 760px;
+      max-width: 100%;
+      min-width: 0;
       border-collapse: collapse;
-      font-size: 0.95rem;
+      table-layout: auto;
+      font-size: clamp(0.84rem, 0.88vw, 0.95rem);
     }
 
-    th, td {
-      border-bottom: 1px solid var(--line);
+    th,
+    td {
       border-right: 1px solid var(--line);
-      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      padding: clamp(5px, 0.55vw, 8px) clamp(5px, 0.65vw, 10px);
+      text-align: center;
       vertical-align: middle;
       word-break: keep-all;
-      text-align: center;
+      overflow-wrap: break-word;
+      line-height: 1.32;
     }
 
-    th:last-child, td:last-child {
+    th:last-child,
+    td:last-child {
       border-right: none;
     }
 
@@ -181,32 +198,29 @@
       background: var(--thead);
       color: #1e3a8a;
       font-weight: 800;
-      text-align: center;
-      white-space: nowrap;
+      white-space: normal;
+      letter-spacing: -0.03em;
     }
 
     tbody td:first-child {
-      font-weight: 700;
-      color: #111827;
       background: #fafafa;
+      color: #111827;
+      font-weight: 700;
     }
 
-    .right {
-      text-align: center;
-    }
-
+    .right,
     .center {
       text-align: center;
     }
 
     .summary {
-      background: #eff6ff;
-      border-left: 6px solid var(--primary);
-      padding: 12px 14px;
-      border-radius: 16px;
       margin-top: 10px;
-      font-weight: 700;
+      padding: 12px 14px;
+      border-left: 6px solid var(--primary);
+      border-radius: 16px;
+      background: #eff6ff;
       color: #1e3a8a;
+      font-weight: 700;
     }
 
     .mini-grid {
@@ -217,621 +231,153 @@
     }
 
     .mini-card {
+      padding: 12px;
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 12px;
       background: #f8fafc;
     }
 
     .mini-card strong {
       display: block;
+      margin-bottom: 6px;
       color: var(--primary-dark);
       font-size: 1.05rem;
-      margin-bottom: 6px;
     }
 
     .sub-option td {
-      border-top: 1px dashed #cbd5e1 !important;
+      border-top: 1px dashed #cbd5e1;
     }
 
     .footer {
+      padding: 16px 10px;
       color: var(--muted);
       text-align: center;
-      padding: 16px 10px;
       font-size: 0.9rem;
     }
 
+    #nav-placeholder {
+      display: none;
+    }
+
     @media (max-width: 900px) {
-
-
-
-
       section {
         padding: 14px 12px;
       }
 
       .mini-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 700px) {
       .container {
-        width: min(100% - 20px, 1180px);
+        width: calc(100% - 20px);
       }
 
       header {
-        padding: 28px 12px 20px;
+        padding: 30px 12px 22px;
       }
 
-      .mini-grid {
-        grid-template-columns: 1fr;
+      header h1 {
+        font-size: clamp(1.65rem, 7vw, 2rem);
       }
 
-      table {
-        font-size: 0.88rem;
-      }
-
-      th, td {
-        padding: 10px 11px;
-      }
-    }
-  
-    @media (max-width: 700px) {
-      body {
-        overflow-x: hidden;
-      }
-
-      .container {
+      nav {
         width: 100%;
-        padding: 0 10px;
+        margin: 0 auto 12px;
+        padding: 7px 6px;
+        border-radius: 0 0 16px 16px;
+      }
+
+      nav ul {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 4px;
+      }
+
+      nav a {
+        min-height: 30px;
+        padding: 6px 1px;
+        border-radius: 7px;
+        font-size: clamp(0.54rem, 1.85vw, 0.62rem);
+        line-height: 1.1;
+        letter-spacing: -0.045em;
+        white-space: nowrap;
       }
 
       section {
-        border-radius: 16px;
+        margin: 12px 0;
         padding: 12px 8px;
-      }
-
-      .table-wrap {
-        width: 100%;
-        overflow-x: hidden;
-        border-radius: 12px;
-      }
-
-      table {
-        width: 100%;
-        min-width: 0;
-        table-layout: fixed;
-        font-size: 0.68rem;
-      }
-
-      th, td {
-        padding: 7px 4px;
-        white-space: normal;
-        word-break: keep-all;
-        overflow-wrap: anywhere;
-        line-height: 1.35;
+        border-radius: 16px;
       }
 
       section h2 {
-        font-size: 1.25rem;
+        font-size: 1.22rem;
       }
 
       h3 {
         font-size: 1rem;
       }
 
-      nav {
-        margin-left: 10px;
-        margin-right: 10px;
-      }
-    }
-
-  
-    @media (max-width: 700px) {
-      nav ul {
-        grid-template-columns: repeat(6, 1fr) !important;
-        gap: 6px;
-      }
-
-      nav a {
-        padding: 8px 2px;
-        font-size: 0.68rem;
-        border-radius: 10px;
-        font-weight: 700;
-        white-space: nowrap;
-      }
-
-      nav {
-        padding: 8px;
-      }
-    }
-
-
-    
-
-
-    @media (max-width: 700px) {
-
-      body {
-        overflow-x: hidden;
-      }
-
-      .container {
-        width: 100%;
-        padding: 0 10px;
-      }
-
-      nav {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        width: 100%;
-        margin: 0 auto 12px auto !important;
-        border-radius: 0 0 18px 18px;
-        padding: 10px 8px;
-        backdrop-filter: blur(8px);
-      }
-
-      nav ul {
-        grid-template-columns: repeat(6, 1fr) !important;
-        gap: 6px;
-      }
-
-      nav a {
-        padding: 9px 2px;
-        font-size: 0.68rem;
+      .table-wrap {
         border-radius: 12px;
-        white-space: nowrap;
       }
 
-      section {
+      table,
+      table.jeongsi-table,
+      table.quant-table,
+      table.susi-table,
+      table.col-adjust,
+      table.qual-table {
         width: 100%;
-      }
-    }
-
-
-    /* ===== 최종 레이아웃 보정 ===== */
-    html, body {
-      max-width: 100%;
-      overflow-x: hidden !important;
-    }
-
-    header {
-      padding: 34px 18px 26px !important;
-    }
-
-    header p {
-      display: none !important;
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 32px)) !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-
-    nav {
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 1000 !important;
-      width: min(1180px, calc(100% - 32px)) !important;
-      margin: 0 auto 20px auto !important;
-      padding: 12px !important;
-      border-radius: 0 0 22px 22px !important;
-      background: rgba(255,255,255,0.96) !important;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 10px 24px rgba(30, 58, 138, 0.12) !important;
-    }
-
-    nav ul {
-      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-      gap: 8px !important;
-    }
-
-    nav a {
-      padding: 10px 4px !important;
-      font-size: 0.86rem !important;
-      white-space: nowrap !important;
-      background: linear-gradient(180deg, #f3f7ff 0%, #e8f0ff 100%) !important;
-      border: 1px solid #cfdcff !important;
-      color: #1e3a8a !important;
-      font-weight: 800 !important;
-    }
-
-    .table-wrap {
-      width: 100% !important;
-      max-width: 100% !important;
-      overflow-x: hidden !important;
-    }
-
-    table {
-      width: 100% !important;
-      min-width: 0 !important;
-      max-width: 100% !important;
-      table-layout: auto !important;
-      font-size: 0.9rem !important;
-    }
-
-    th, td {
-      font-size: inherit !important;
-      padding: 5px 7px !important;
-      line-height: 1.28 !important;
-      text-align: center !important;
-      vertical-align: middle !important;
-      word-break: keep-all !important;
-      overflow-wrap: break-word !important;
-    }
-
-    table.quant-table {
-      table-layout: fixed !important;
-    }
-
-    table.quant-table col:nth-child(1) { width: 19% !important; }
-    table.quant-table col:nth-child(2) { width: 11% !important; }
-    table.quant-table col:nth-child(3) { width: 34% !important; }
-    table.quant-table col:nth-child(4) { width: 36% !important; }
-
-    table.quant-table th,
-    table.quant-table td {
-      padding-left: 4px !important;
-      padding-right: 4px !important;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        padding: 30px 12px 22px !important;
+        max-width: 100%;
+        min-width: 0;
+        table-layout: auto;
+        font-size: clamp(0.58rem, 1.95vw, 0.72rem);
       }
 
-      header h1 {
-        font-size: 2rem !important;
-      }
-
-      .container {
-        width: 100% !important;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-      }
-
-      nav {
-        width: 100% !important;
-        margin: 0 auto 12px auto !important;
-        padding: 8px !important;
-        border-radius: 0 0 18px 18px !important;
-      }
-
-      nav ul {
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-        gap: 5px !important;
-      }
-
-      nav a {
-        padding: 8px 1px !important;
-        font-size: 0.62rem !important;
-        border-radius: 10px !important;
-      }
-
-      section {
-        width: 100% !important;
-        padding: 12px 8px !important;
-        border-radius: 16px !important;
-      }
-
-      table {
-        table-layout: fixed !important;
-        font-size: 0.74rem !important;
-      }
-
-      th, td {
-        padding: 4px 3px !important;
-        line-height: 1.22 !important;
-        white-space: normal !important;
-      }
-
-      table.quant-table col:nth-child(1) { width: 20% !important; }
-      table.quant-table col:nth-child(2) { width: 11% !important; }
-      table.quant-table col:nth-child(3) { width: 35% !important; }
-      table.quant-table col:nth-child(4) { width: 34% !important; }
-    }
-
-
-    /* ===== 메뉴 고정 최종 수정: sticky 대신 fixed 사용 ===== */
-    nav {
-      position: fixed !important;
-      top: 0 !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-      z-index: 9999 !important;
-      width: min(1180px, calc(100% - 32px)) !important;
-      margin: 0 !important;
-      padding: 12px !important;
-      border-radius: 0 0 22px 22px !important;
-      background: rgba(255,255,255,0.97) !important;
-      backdrop-filter: blur(8px) !important;
-      box-shadow: 0 10px 24px rgba(30, 58, 138, 0.14) !important;
-    }
-
-    /* fixed 메뉴가 본문을 가리지 않도록 상단 여백 확보 */
-    main {
-      padding-top: 86px !important;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        width: 100% !important;
-        left: 0 !important;
-        transform: none !important;
-        padding: 8px !important;
-        border-radius: 0 0 18px 18px !important;
-      }
-
-      nav ul {
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-        gap: 5px !important;
-      }
-
-      nav a {
-        padding: 8px 1px !important;
-        font-size: 0.62rem !important;
-        border-radius: 10px !important;
-        white-space: nowrap !important;
-      }
-
-      main {
-        padding-top: 72px !important;
-      }
-    }
-
-
-    /* ===== 스마트폰 폭에 따른 표 여백 자동 조정 ===== */
-    th,
-    td {
-      padding-left: clamp(3px, 0.7vw, 7px) !important;
-      padding-right: clamp(3px, 0.7vw, 7px) !important;
-      padding-top: clamp(4px, 0.55vw, 6px) !important;
-      padding-bottom: clamp(4px, 0.55vw, 6px) !important;
-    }
-
-    @media (max-width: 700px) {
-      table {
-        font-size: clamp(0.68rem, 2.15vw, 0.78rem) !important;
-        table-layout: fixed !important;
+      colgroup,
+      col {
+        width: auto;
       }
 
       th,
-      td {
-        padding-left: clamp(1px, 0.85vw, 4px) !important;
-        padding-right: clamp(1px, 0.85vw, 4px) !important;
-        padding-top: clamp(3px, 0.8vw, 5px) !important;
-        padding-bottom: clamp(3px, 0.8vw, 5px) !important;
-        line-height: clamp(1.16, 1.3vw, 1.24) !important;
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
+      td,
+      table.jeongsi-table th,
+      table.jeongsi-table td,
+      table.quant-table th,
+      table.quant-table td,
+      table.susi-table th,
+      table.susi-table td,
+      table.col-adjust th,
+      table.col-adjust td,
+      table.qual-table th,
+      table.qual-table td {
+        padding: clamp(3px, 0.6vw, 5px) clamp(1px, 0.35vw, 3px);
+        font-size: inherit;
+        line-height: 1.18;
+        white-space: normal;
+        word-break: keep-all;
+        overflow-wrap: break-word;
       }
 
-      /* 스마트폰에서 정량평가 표 열 비율 재보정 */
-      table.quant-table col:nth-child(1) { width: 19% !important; }
-      table.quant-table col:nth-child(2) { width: 10% !important; }
-      table.quant-table col:nth-child(3) { width: 36% !important; }
-      table.quant-table col:nth-child(4) { width: 35% !important; }
+      th {
+        letter-spacing: -0.04em;
+      }
+
+      td {
+        letter-spacing: -0.03em;
+      }
     }
 
     @media (max-width: 430px) {
-      table {
-        font-size: clamp(0.62rem, 2.45vw, 0.72rem) !important;
-      }
-
-      th,
-      td {
-        padding-left: clamp(1px, 0.6vw, 3px) !important;
-        padding-right: clamp(1px, 0.6vw, 3px) !important;
-      }
-    }
-
-
-    /* ===== 메뉴 위치 최종 수정 =====
-       처음에는 제목 아래에 있고, 스크롤 시 상단에 고정 */
-    nav {
-      position: sticky !important;
-      top: 0 !important;
-      left: auto !important;
-      transform: none !important;
-      z-index: 9999 !important;
-      width: min(1180px, calc(100% - 32px)) !important;
-      margin: 0 auto 20px auto !important;
-      border-radius: 0 0 22px 22px !important;
-    }
-
-    main {
-      padding-top: 0 !important;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        position: sticky !important;
-        top: 0 !important;
-        left: auto !important;
-        transform: none !important;
-        width: 100% !important;
-        margin: 0 auto 12px auto !important;
-        border-radius: 0 0 18px 18px !important;
-      }
-
-      main {
-        padding-top: 0 !important;
-      }
-    }
-
-
-    /* ===== 메뉴 상단 고정 최종 보정 =====
-       sticky가 깨지는 원인인 부모 overflow를 해제 */
-    .container {
-      overflow: visible !important;
-    }
-
-    nav {
-      position: sticky !important;
-      top: 0 !important;
-      z-index: 99999 !important;
-      width: min(1180px, calc(100% - 32px)) !important;
-      margin: 0 auto 20px auto !important;
-      background: rgba(255,255,255,0.98) !important;
-      backdrop-filter: blur(8px) !important;
-      box-shadow: 0 10px 24px rgba(30, 58, 138, 0.14) !important;
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        overflow: visible !important;
-      }
-
-      nav {
-        position: sticky !important;
-        top: 0 !important;
-        z-index: 99999 !important;
-        width: 100% !important;
-        margin: 0 auto 12px auto !important;
-      }
-    }
-
-
-    /* ===== 메뉴 고정 최종 복구 =====
-       처음에는 제목 아래에 있고, 스크롤을 내리면 상단에 고정 */
-    nav {
-      position: relative !important;
-      top: auto !important;
-      left: auto !important;
-      transform: none !important;
-      z-index: 9999 !important;
-      width: min(1180px, calc(100% - 32px)) !important;
-      margin: 0 auto 20px auto !important;
-      border-radius: 0 0 22px 22px !important;
-      background: rgba(255,255,255,0.98) !important;
-      backdrop-filter: blur(8px) !important;
-      box-shadow: 0 10px 24px rgba(30, 58, 138, 0.14) !important;
-    }
-
-    nav.nav-fixed {
-      position: fixed !important;
-      top: 0 !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-      margin: 0 !important;
-    }
-
-    #nav-placeholder {
-      display: none;
-      height: 0;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        width: 100% !important;
-        margin: 0 auto 12px auto !important;
-        border-radius: 0 0 18px 18px !important;
-      }
-
-      nav.nav-fixed {
-        left: 0 !important;
-        transform: none !important;
-        width: 100% !important;
-      }
-    }
-
-
-    /* ===== 메뉴 모양 최종 보정 =====
-       모바일에서 버튼이 동그라미처럼 보이지 않도록 3칸 x 2줄 구성 */
-    nav {
-      border-radius: 0 0 18px 18px !important;
-      padding: 10px 12px !important;
-    }
-
-    nav ul {
-      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-      gap: 8px !important;
-    }
-
-    nav a {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      min-height: 34px !important;
-      padding: 8px 6px !important;
-      border-radius: 9px !important;
-      font-size: 0.84rem !important;
-      line-height: 1.15 !important;
-      white-space: nowrap !important;
-      word-break: keep-all !important;
-      text-align: center !important;
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        padding: 8px 10px !important;
-        border-radius: 0 0 16px 16px !important;
-      }
-
       nav ul {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 6px !important;
+        gap: 3px;
       }
 
       nav a {
-        min-height: 32px !important;
-        padding: 7px 4px !important;
-        border-radius: 8px !important;
-        font-size: 0.72rem !important;
-        line-height: 1.15 !important;
-        white-space: nowrap !important;
-      }
-    }
-
-
-    /* ===== 모바일 메뉴 한 줄 유지 최종 보정 ===== */
-    @media (max-width: 700px) {
-      nav {
-        padding: 7px 6px !important;
-        border-radius: 0 0 14px 14px !important;
-      }
-
-      nav ul {
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-        gap: 4px !important;
-      }
-
-      nav a {
-        min-height: 30px !important;
-        padding: 6px 1px !important;
-        border-radius: 7px !important;
-        font-size: 0.58rem !important;
-        line-height: 1.1 !important;
-        white-space: nowrap !important;
-        letter-spacing: -0.04em !important;
-      }
-    }
-
-    @media (max-width: 390px) {
-      nav a {
-        font-size: 0.54rem !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-      }
-
-      nav ul {
-        gap: 3px !important;
-      }
-    }
-
-
-    /* ===== 스마트폰 표 전체 반응형 보정 =====
-       특정 표/특정 열을 강제로 조정하지 않고,
-       화면 폭이 줄어들면 표 전체 글자 크기와 셀 여백이 함께 줄어들도록 처리 */
-    @media (max-width: 700px) {
-      .table-wrap {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
+        font-size: clamp(0.5rem, 1.75vw, 0.56rem);
+        padding-left: 0;
+        padding-right: 0;
       }
 
       table,
@@ -840,213 +386,23 @@
       table.susi-table,
       table.col-adjust,
       table.qual-table {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        table-layout: auto !important;
-        font-size: clamp(0.62rem, 2.15vw, 0.76rem) !important;
-      }
-
-      colgroup,
-      col {
-        width: auto !important;
-      }
-
-      th,
-      td,
-      table.jeongsi-table th,
-      table.jeongsi-table td,
-      table.quant-table th,
-      table.quant-table td,
-      table.susi-table th,
-      table.susi-table td,
-      table.col-adjust th,
-      table.col-adjust td,
-      table.qual-table th,
-      table.qual-table td {
-        font-size: inherit !important;
-        padding-left: clamp(1px, 0.55vw, 4px) !important;
-        padding-right: clamp(1px, 0.55vw, 4px) !important;
-        padding-top: clamp(3px, 0.75vw, 5px) !important;
-        padding-bottom: clamp(3px, 0.75vw, 5px) !important;
-        line-height: 1.22 !important;
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-      }
-    }
-
-    @media (max-width: 390px) {
-      table,
-      table.jeongsi-table,
-      table.quant-table,
-      table.susi-table,
-      table.col-adjust,
-      table.qual-table {
-        font-size: clamp(0.58rem, 2.05vw, 0.68rem) !important;
+        font-size: clamp(0.54rem, 1.82vw, 0.66rem);
       }
 
       th,
       td {
-        padding-left: 1px !important;
-        padding-right: 1px !important;
+        padding-left: 0;
+        padding-right: 0;
+        line-height: 1.16;
       }
     }
 
-
-    /* ===== 메뉴 폭 고정 + 표 전체 반응형 여백 최종 보정 ===== */
-
-    /* 메뉴는 일반 상태/고정 상태 모두 같은 폭 유지 */
-    nav,
-    nav.nav-fixed {
-      width: min(1180px, calc(100% - 32px)) !important;
-      max-width: min(1180px, calc(100% - 32px)) !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-      box-sizing: border-box !important;
-    }
-
-    @media (max-width: 700px) {
-      nav,
-      nav.nav-fixed {
-        width: calc(100% - 20px) !important;
-        max-width: calc(100% - 20px) !important;
-        left: 10px !important;
-        right: 10px !important;
-        transform: none !important;
-        box-sizing: border-box !important;
-      }
-
-      /* 스마트폰 표: 특정 열 강제 조정 없이 표 전체가 함께 줄어들도록 통일 */
-      .table-wrap {
-        width: 100% !important;
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-      }
-
-      table,
-      table.jeongsi-table,
-      table.quant-table,
-      table.susi-table,
-      table.col-adjust,
-      table.qual-table {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        table-layout: auto !important;
-        font-size: clamp(0.58rem, 1.95vw, 0.72rem) !important;
-      }
-
-      colgroup,
-      col {
-        width: auto !important;
-      }
-
-      th,
-      td,
-      table.jeongsi-table th,
-      table.jeongsi-table td,
-      table.quant-table th,
-      table.quant-table td,
-      table.susi-table th,
-      table.susi-table td,
-      table.col-adjust th,
-      table.col-adjust td,
-      table.qual-table th,
-      table.qual-table td {
-        font-size: inherit !important;
-        padding-left: clamp(0px, 0.35vw, 3px) !important;
-        padding-right: clamp(0px, 0.35vw, 3px) !important;
-        padding-top: clamp(3px, 0.6vw, 5px) !important;
-        padding-bottom: clamp(3px, 0.6vw, 5px) !important;
-        line-height: 1.18 !important;
-        white-space: normal !important;
-        word-break: keep-all !important;
-        overflow-wrap: break-word !important;
-      }
-
-      /* 긴 단어 때문에 특정 열만 답답해지는 것을 완화 */
-      th {
-        letter-spacing: -0.04em !important;
-      }
-
-      td {
-        letter-spacing: -0.03em !important;
-      }
-    }
-
-    @media (max-width: 390px) {
-      table,
-      table.jeongsi-table,
-      table.quant-table,
-      table.susi-table,
-      table.col-adjust,
-      table.qual-table {
-        font-size: clamp(0.54rem, 1.85vw, 0.66rem) !important;
-      }
-
-      th,
-      td {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        line-height: 1.16 !important;
-      }
-    }
-
-
-    /* ===== 모바일 메뉴 폭 최종 보정 =====
-       첫 화면/고정 상태 모두 본문 카드 폭과 동일하게 유지 */
-    @media (max-width: 700px) {
-      nav,
-      nav.nav-fixed {
-        width: calc(100vw - 36px) !important;
-        max-width: calc(100vw - 36px) !important;
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%) !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box !important;
-      }
-
-      nav ul {
-        width: 100% !important;
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-      }
-    }
-
-
-    /* ===== 모바일 메뉴 폭 재수정 =====
-       첫 화면과 스크롤 후 메뉴 폭이 달라지지 않도록 전체 폭 기준으로 통일 */
-    @media (max-width: 700px) {
-      nav,
-      nav.nav-fixed {
-        width: 100vw !important;
-        max-width: 100vw !important;
-        left: 0 !important;
-        right: 0 !important;
-        transform: none !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        box-sizing: border-box !important;
-        border-radius: 0 0 16px 16px !important;
-      }
-
-      nav ul {
-        width: 100% !important;
-        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-        gap: 4px !important;
-      }
-
+    @media (max-width: 360px) {
       nav a {
-        min-width: 0 !important;
-        box-sizing: border-box !important;
+        font-size: 0.49rem;
       }
     }
-
-</style>
+  </style>
 </head>
 
 <body>
@@ -1067,7 +423,6 @@
         <li><a href="#section6">핵심 요약</a></li>
       </ul>
     </nav>
-    <div id="nav-placeholder"></div>
 
     <main>
       <section id="section1">
@@ -1414,48 +769,6 @@
   <footer class="footer">
     2028 대입 전형 변화 정리 · 송도이샘로봇
   </footer>
-
-  <script>
-    // 메뉴 고정 처리:
-    // 처음에는 제목 아래에 두고, 스크롤이 메뉴 위치를 지나면 상단에 고정한다.
-    document.addEventListener("DOMContentLoaded", function () {
-      const nav = document.querySelector("nav");
-      const placeholder = document.getElementById("nav-placeholder");
-
-      if (!nav || !placeholder) return;
-
-      let navTop = nav.getBoundingClientRect().top + window.pageYOffset;
-
-      function updatePlaceholderHeight() {
-        placeholder.style.height = nav.offsetHeight + "px";
-      }
-
-      function handleScroll() {
-        if (window.pageYOffset >= navTop) {
-          if (!nav.classList.contains("nav-fixed")) {
-            updatePlaceholderHeight();
-            placeholder.style.display = "block";
-            nav.classList.add("nav-fixed");
-          }
-        } else {
-          nav.classList.remove("nav-fixed");
-          placeholder.style.display = "none";
-          placeholder.style.height = "0";
-        }
-      }
-
-      window.addEventListener("scroll", handleScroll);
-      window.addEventListener("resize", function () {
-        nav.classList.remove("nav-fixed");
-        placeholder.style.display = "none";
-        placeholder.style.height = "0";
-        navTop = nav.getBoundingClientRect().top + window.pageYOffset;
-        handleScroll();
-      });
-
-      handleScroll();
-    });
-  </script>
 
 </body>
 </html>
