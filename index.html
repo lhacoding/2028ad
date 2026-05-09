@@ -226,6 +226,10 @@
       margin-bottom: 6px;
     }
 
+    .sub-option td {
+      border-top: 1px dashed #cbd5e1 !important;
+    }
+
     .footer {
       color: var(--muted);
       text-align: center;
@@ -272,6 +276,57 @@
         padding: 10px 11px;
       }
     }
+  
+    @media (max-width: 700px) {
+      body {
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 100%;
+        padding: 0 10px;
+      }
+
+      section {
+        border-radius: 16px;
+        padding: 12px 8px;
+      }
+
+      .table-wrap {
+        width: 100%;
+        overflow-x: hidden;
+        border-radius: 12px;
+      }
+
+      table {
+        width: 100%;
+        min-width: 0;
+        table-layout: fixed;
+        font-size: 0.72rem;
+      }
+
+      th, td {
+        padding: 7px 4px;
+        white-space: normal;
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+        line-height: 1.35;
+      }
+
+      section h2 {
+        font-size: 1.25rem;
+      }
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      nav {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+
   </style>
 </head>
 
@@ -486,24 +541,24 @@
             <tbody>
               <tr><td>서울대학교</td><td class="center">-</td><td>1단계(3배수): 수능100<br>2단계: 수능60 + 교과역량평가40</td></tr>
               <tr><td rowspan="2">고려대학교</td><td class="center">일반</td><td>수능100</td></tr>
-              <tr><td class="center">교과우수</td><td>수능80 + 교과20</td></tr>
+              <tr class="sub-option"><td class="center">교과우수</td><td>수능80 + 교과20</td></tr>
               <tr><td>연세대학교</td><td class="center">-</td><td>수능90 + 서류10</td></tr>
               <tr><td rowspan="2">서강대학교</td><td class="center">일반</td><td>수능100</td></tr>
-              <tr><td class="center">지역균형</td><td>수능80 + 교과10 + 출결10</td></tr>
+              <tr class="sub-option"><td class="center">지역균형</td><td>수능80 + 교과10 + 출결10</td></tr>
               <tr><td rowspan="3">성균관대학교</td><td class="center">일반</td><td>수능100</td></tr>
-              <tr><td class="center">특화</td><td>수능100</td></tr>
-              <tr><td class="center">융합인재</td><td>학생부100 (*사범계열만 선발)</td></tr>
+              <tr class="sub-option"><td class="center">특화</td><td>수능100</td></tr>
+              <tr class="sub-option"><td class="center">융합인재</td><td>학생부100 (*사범계열만 선발)</td></tr>
               <tr><td>한양대학교</td><td class="center">-</td><td>수능90 + 학생부종합10</td></tr>
               <tr><td rowspan="2">이화여자대학교</td><td class="center">수능</td><td>수능100</td></tr>
-              <tr><td class="center">수능-학생부</td><td>수능85 + 서류15</td></tr>
+              <tr class="sub-option"><td class="center">수능-학생부</td><td>수능85 + 서류15</td></tr>
               <tr><td rowspan="2">중앙대학교</td><td class="center">수능89</td><td>수능89 + 출결11</td></tr>
-              <tr><td class="center">수능67</td><td>수능67 + 서류33</td></tr>
+              <tr class="sub-option"><td class="center">수능67</td><td>수능67 + 서류33</td></tr>
               <tr><td rowspan="2">경희대학교</td><td class="center">수능</td><td>수능100</td></tr>
-              <tr><td class="center">수능-학생부</td><td>수능90 + 학생부10</td></tr>
+              <tr class="sub-option"><td class="center">수능-학생부</td><td>수능90 + 학생부10</td></tr>
               <tr><td>한국외국어대학교</td><td class="center">-</td><td>수능100</td></tr>
               <tr><td>서울시립대학교</td><td class="center">-</td><td>수능80 + 교과18 + 출결2</td></tr>
               <tr><td rowspan="2">건국대학교</td><td class="center">일반</td><td>수능100</td></tr>
-              <tr><td class="center">[다]군 자전</td><td>수능90 + 교과정성10</td></tr>
+              <tr class="sub-option"><td class="center">[다]군 자전</td><td>수능90 + 교과정성10</td></tr>
               <tr><td>동국대학교</td><td class="center">-</td><td>수능80 + 학생부20</td></tr>
               <tr><td>홍익대학교</td><td class="center">-</td><td>수능90 + 교과10</td></tr>
               <tr><td>숙명여자대학교</td><td class="center">-</td><td>수능80 + 서류20</td></tr>
@@ -558,7 +613,7 @@
         </div>
 
         <h3>3) 학생부 평가에서 보는 요소</h3>
-        <p class="note">※ 성균관대 정시 융합인재는 학생부 100%로 사범계열만 선발</p>
+        
 
         <div class="mini-grid">
           <div class="mini-card"><strong>교과학습발달상황</strong>이수과목, 성취도, 과목 선택의 적절성</div>
@@ -576,7 +631,7 @@
   </div>
 
   <footer class="footer">
-    2028 대입 전형 변화 정리
+    2028 대입 전형 변화 정리 · 송도이샘로봇
   </footer>
 </body>
 </html>
