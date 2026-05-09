@@ -155,7 +155,7 @@
 
     table {
       width: 100%;
-      min-width: 760px;
+      min-width: 0;
       border-collapse: collapse;
       font-size: 0.95rem;
       table-layout: auto;
@@ -390,14 +390,7 @@
         width: 100%;
       }
     }
-
-
-    table.col-adjust col.col-narrow { width: 8%; }
-    table.col-adjust col.col-medium { width: 16%; }
-    table.col-adjust col.col-wide { width: 34%; }
-
-
-    table.jeongsi-table {
+table.jeongsi-table {
       table-layout: fixed;
     }
 
@@ -496,6 +489,59 @@
         padding: 5px 3px !important;
         line-height: 1.28 !important;
       }
+    }
+
+
+    table.col-adjust {
+      table-layout: fixed;
+    }
+
+    table.col-adjust th,
+    table.col-adjust td {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+
+    @media (min-width: 701px) {
+      table.col-adjust th,
+      table.col-adjust td {
+        white-space: normal;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+    }
+
+
+    /* PC·모바일 공통 좌우 스크롤 방지 */
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden !important;
+    }
+
+    .container,
+    section,
+    .table-wrap {
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+    }
+
+    table,
+    table.jeongsi-table,
+    table.quant-table,
+    table.susi-table,
+    table.col-adjust {
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      table-layout: fixed !important;
+    }
+
+    th,
+    td {
+      white-space: normal !important;
+      word-break: keep-all !important;
+      overflow-wrap: break-word !important;
     }
 
 </style>
@@ -631,11 +677,11 @@
         <div class="table-wrap">
           <table class="col-adjust">
             <colgroup>
-              <col class="col-medium">
-              <col class="col-wide">
-              <col class="col-narrow">
-              <col class="col-medium">
-              <col class="col-medium">
+              <col style="width: 16%;">
+              <col style="width: 30%;">
+              <col style="width: 9%;">
+              <col style="width: 15%;">
+              <col style="width: 30%;">
             </colgroup>
             <thead>
               <tr>
