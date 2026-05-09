@@ -241,9 +241,7 @@
     }
 
     @media (max-width: 900px) {
-      nav {
-        position: static;
-      }
+
 
 
 
@@ -345,6 +343,27 @@
 
       nav {
         padding: 8px;
+      }
+    }
+
+
+    @media (max-width: 700px) {
+      nav {
+        position: sticky !important;
+        top: 8px;
+        z-index: 1000;
+        width: calc(100% - 20px);
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .container {
+        width: 100%;
+        padding: 0 10px;
+      }
+
+      section {
+        width: 100%;
       }
     }
 
