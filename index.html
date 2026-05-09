@@ -823,6 +823,76 @@
       }
     }
 
+
+    /* ===== 스마트폰 표 전체 반응형 보정 =====
+       특정 표/특정 열을 강제로 조정하지 않고,
+       화면 폭이 줄어들면 표 전체 글자 크기와 셀 여백이 함께 줄어들도록 처리 */
+    @media (max-width: 700px) {
+      .table-wrap {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      table,
+      table.jeongsi-table,
+      table.quant-table,
+      table.susi-table,
+      table.col-adjust,
+      table.qual-table {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        table-layout: auto !important;
+        font-size: clamp(0.62rem, 2.15vw, 0.76rem) !important;
+      }
+
+      colgroup,
+      col {
+        width: auto !important;
+      }
+
+      th,
+      td,
+      table.jeongsi-table th,
+      table.jeongsi-table td,
+      table.quant-table th,
+      table.quant-table td,
+      table.susi-table th,
+      table.susi-table td,
+      table.col-adjust th,
+      table.col-adjust td,
+      table.qual-table th,
+      table.qual-table td {
+        font-size: inherit !important;
+        padding-left: clamp(1px, 0.55vw, 4px) !important;
+        padding-right: clamp(1px, 0.55vw, 4px) !important;
+        padding-top: clamp(3px, 0.75vw, 5px) !important;
+        padding-bottom: clamp(3px, 0.75vw, 5px) !important;
+        line-height: 1.22 !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      table,
+      table.jeongsi-table,
+      table.quant-table,
+      table.susi-table,
+      table.col-adjust,
+      table.qual-table {
+        font-size: clamp(0.58rem, 2.05vw, 0.68rem) !important;
+      }
+
+      th,
+      td {
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+      }
+    }
+
 </style>
 </head>
 
