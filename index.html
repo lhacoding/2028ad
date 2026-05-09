@@ -893,6 +893,108 @@
       }
     }
 
+
+    /* ===== 메뉴 폭 고정 + 표 전체 반응형 여백 최종 보정 ===== */
+
+    /* 메뉴는 일반 상태/고정 상태 모두 같은 폭 유지 */
+    nav,
+    nav.nav-fixed {
+      width: min(1180px, calc(100% - 32px)) !important;
+      max-width: min(1180px, calc(100% - 32px)) !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    @media (max-width: 700px) {
+      nav,
+      nav.nav-fixed {
+        width: calc(100% - 20px) !important;
+        max-width: calc(100% - 20px) !important;
+        left: 10px !important;
+        right: 10px !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+      }
+
+      /* 스마트폰 표: 특정 열 강제 조정 없이 표 전체가 함께 줄어들도록 통일 */
+      .table-wrap {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      table,
+      table.jeongsi-table,
+      table.quant-table,
+      table.susi-table,
+      table.col-adjust,
+      table.qual-table {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        table-layout: auto !important;
+        font-size: clamp(0.58rem, 1.95vw, 0.72rem) !important;
+      }
+
+      colgroup,
+      col {
+        width: auto !important;
+      }
+
+      th,
+      td,
+      table.jeongsi-table th,
+      table.jeongsi-table td,
+      table.quant-table th,
+      table.quant-table td,
+      table.susi-table th,
+      table.susi-table td,
+      table.col-adjust th,
+      table.col-adjust td,
+      table.qual-table th,
+      table.qual-table td {
+        font-size: inherit !important;
+        padding-left: clamp(0px, 0.35vw, 3px) !important;
+        padding-right: clamp(0px, 0.35vw, 3px) !important;
+        padding-top: clamp(3px, 0.6vw, 5px) !important;
+        padding-bottom: clamp(3px, 0.6vw, 5px) !important;
+        line-height: 1.18 !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+      }
+
+      /* 긴 단어 때문에 특정 열만 답답해지는 것을 완화 */
+      th {
+        letter-spacing: -0.04em !important;
+      }
+
+      td {
+        letter-spacing: -0.03em !important;
+      }
+    }
+
+    @media (max-width: 390px) {
+      table,
+      table.jeongsi-table,
+      table.quant-table,
+      table.susi-table,
+      table.col-adjust,
+      table.qual-table {
+        font-size: clamp(0.54rem, 1.85vw, 0.66rem) !important;
+      }
+
+      th,
+      td {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        line-height: 1.16 !important;
+      }
+    }
+
 </style>
 </head>
 
