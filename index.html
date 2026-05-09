@@ -242,9 +242,7 @@
         position: static;
       }
 
-      nav ul {
-        grid-template-columns: 1fr;
-      }
+
 
       section {
         padding: 14px 12px;
@@ -327,7 +325,27 @@
       }
     }
 
-  </style>
+  
+    @media (max-width: 700px) {
+      nav ul {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 6px;
+      }
+
+      nav a {
+        padding: 8px 2px;
+        font-size: 0.72rem;
+        border-radius: 10px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      nav {
+        padding: 8px;
+      }
+    }
+
+</style>
 </head>
 
 <body>
