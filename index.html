@@ -448,6 +448,56 @@
       }
     }
 
+
+    /* 모바일 표 좌우 스크롤 방지 최종 보정 */
+    @media (max-width: 700px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden !important;
+      }
+
+      .container,
+      section,
+      .table-wrap {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+
+      table,
+      table.jeongsi-table,
+      table.quant-table,
+      table.susi-table,
+      table.col-adjust {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        table-layout: fixed !important;
+      }
+
+      colgroup,
+      col {
+        width: auto !important;
+      }
+
+      th,
+      td,
+      table.quant-table th,
+      table.quant-table td,
+      table.susi-table th,
+      table.susi-table td,
+      table.jeongsi-table th,
+      table.jeongsi-table td {
+        white-space: normal !important;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+        padding: 5px 3px !important;
+        line-height: 1.28 !important;
+      }
+    }
+
 </style>
 </head>
 
