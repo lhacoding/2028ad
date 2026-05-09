@@ -347,19 +347,41 @@
     }
 
 
+    
+
+
     @media (max-width: 700px) {
-      nav {
-        position: sticky !important;
-        top: 8px;
-        z-index: 1000;
-        width: calc(100% - 20px);
-        margin-left: auto !important;
-        margin-right: auto !important;
+
+      body {
+        overflow-x: hidden;
       }
 
       .container {
         width: 100%;
         padding: 0 10px;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        margin: 0 auto 14px auto !important;
+        border-radius: 0 0 18px 18px;
+        padding: 10px 8px;
+        backdrop-filter: blur(8px);
+      }
+
+      nav ul {
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 6px;
+      }
+
+      nav a {
+        padding: 9px 2px;
+        font-size: 0.72rem;
+        border-radius: 12px;
+        white-space: nowrap;
       }
 
       section {
